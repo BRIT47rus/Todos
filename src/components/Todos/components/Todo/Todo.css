@@ -1,0 +1,11 @@
+.todo {
+    padding: var(--input-padding);
+    border-bottom: 1px solid var(--color-secondary);
+    display: flex;
+    align-items: center;
+}
+.todo :first-child {
+}
+.todo span {
+    margin-left: 24px;
+}

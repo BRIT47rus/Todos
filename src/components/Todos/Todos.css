@@ -1,0 +1,11 @@
+.todos {
+    --input-padding: 16px 24px;
+    background: var(--color-bg-card);
+    box-shadow: 5px 9px 28px var(--color--text);
+    width: 100%;
+    min-height: 50%;
+}
+.todos__input-text {
+    padding: var(--input-padding);
+    border-bottom: 1px solid var(--color-secondary);
+}
