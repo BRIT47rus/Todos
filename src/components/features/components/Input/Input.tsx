@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
 }
 
 export const Input: FC<Props> = ({ type = 'checkbox', ...rest }) => {
-    const [checked, setCheked] = useState(true);
+    const [checked] = useState(true);
 
     return (
         <div className={cls('input-container')} {...rest}>
