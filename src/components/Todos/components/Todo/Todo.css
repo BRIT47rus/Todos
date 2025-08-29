@@ -9,3 +9,6 @@
 .todo span {
     margin-left: 24px;
 }
+.todo__button {
+    margin-left: auto;
+}

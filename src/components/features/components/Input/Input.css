@@ -1,24 +1,39 @@
 input {
     all: unset;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+input:focus {
+    color: var(--color-bg-card);
+    background: var(--color--text);
 }
 .input-container {
-    --size-input: 46px;
+    --size-input: 40px;
+    --color-icon-complete: green;
+    --color-icon-delete: red;
 }
 
 .input-checkbox {
-    width: var(--size-input);
-    min-height: var(--size-input);
-    border-radius: 50%;
-    border: 1px solid var(--color-secondary);
-    display: block;
-    cursor: pointer;
+    display: none;
 }
 .input-container input:checked {
     background-color: #000;
 }
 .input-text {
     padding: var(--input-padding);
-
     width: 100%;
+}
+.input-checkbox__icon {
+    position: relative;
+    min-width: var(--size-input);
+    height: var(--size-input);
+    border-radius: 50%;
+    border: 1px solid var(--color-secondary);
+    cursor: pointer;
+}
+.input-checkbox__icon svg {
+    position: absolute;
+    top: -2px;
+}
+.input-checkbox__icon:hover {
 }

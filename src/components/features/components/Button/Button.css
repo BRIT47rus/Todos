@@ -1,0 +1,7 @@
+.button {
+    display: flex;
+    cursor: pointer;
+}
+.button button {
+    display: none;
+}
