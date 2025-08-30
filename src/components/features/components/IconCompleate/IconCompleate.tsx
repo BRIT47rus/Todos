@@ -1,4 +1,6 @@
-interface Props {
+import type { HTMLAttributes } from 'react';
+
+interface Props extends HTMLAttributes<HTMLElement> {
     checked: boolean;
     className: string;
 }
@@ -6,7 +8,7 @@ interface Props {
 export const IconCompleate = ({ checked, className }: Props) => {
     return (
         <div className={className}>
-            {checked ? (
+            {!checked ? (
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="var(--size-input)"

@@ -7,19 +7,18 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
 }
 
 export const Input: FC<Props> = ({ type = 'checkbox', ...rest }) => {
-    const [checked] = useState(true);
+    const [checked, setChecked] = useState(false);
+
+    const swicthCopleate = () => {
+        setChecked((o) => !o);
+    };
 
     return (
         <div className={cls('input-container')} {...rest}>
             {type === 'text' ? (
                 <input className={cls('input-text')} type={'text'} />
             ) : (
-                <div>
-                    <input
-                        checked={checked}
-                        className={cls('input-checkbox')}
-                        type={'checkbox'}
-                    />
+                <div onClick={swicthCopleate}>
                     <IconCompleate
                         checked={checked}
                         className="input-checkbox__icon"

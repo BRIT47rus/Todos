@@ -13,9 +13,6 @@ input:focus {
     --color-icon-delete: red;
 }
 
-.input-checkbox {
-    display: none;
-}
 .input-container input:checked {
     background-color: #000;
 }
