@@ -3,10 +3,10 @@ import './Button.css';
 interface Props extends HTMLAttributes<HTMLButtonElement> {
     element: ReactNode;
 }
-export const Button: FC<Props> = ({ element }) => {
+export const Button: FC<Props> = ({ element, ...rest }) => {
     return (
         <div className="button">
-            <button></button>
+            <button {...rest}></button>
             {element}
         </div>
     );

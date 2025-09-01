@@ -1,7 +1,14 @@
 import { useState, type FC, type ReactNode } from 'react';
 import type { ITodo } from './types';
 import { TodoContext } from './hooks';
-const initialTodos: ITodo[] = [{ checked: false, title: 'Я из контекста' }];
+const initialTodos: ITodo[] = [
+    { checked: false, title: 'Я из контекста', id: 14 },
+    {
+        checked: true,
+        title: 'Я из контекста завершенный',
+        id: 145,
+    },
+];
 export interface ITodoContext {
     todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;

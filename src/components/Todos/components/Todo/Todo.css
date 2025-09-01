@@ -12,3 +12,6 @@
 .todo__button {
     margin-left: auto;
 }
+.todo__text-compleate {
+    background: #000;
+}

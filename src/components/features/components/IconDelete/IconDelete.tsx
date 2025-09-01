@@ -8,8 +8,8 @@ export const IconDelete = () => {
         >
             <path
                 stroke="red"
-                stroke-linecap="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
                 d="M20 20L4 4m16 0L4 20"
             />
         </svg>
