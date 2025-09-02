@@ -1,8 +1,18 @@
-import { type FC, type HTMLAttributes } from 'react';
+import {
+    useEffect,
+    useState,
+    type ChangeEvent,
+    type FC,
+    type HTMLAttributes,
+    type RefObject,
+} from 'react';
 import './Input.css';
 import cls from 'classnames';
 import { IconCompleate } from '../IconCompleate/IconCompleate';
 import { useTodosCTX } from '../../../App/hooks';
+import { Button } from '../Button/Button';
+import { IconAdd } from '../IconAdd/IconAdd';
+
 interface Props extends HTMLAttributes<HTMLInputElement> {
     type?: 'text' | 'checkbox';
     todoId?: number;
@@ -15,8 +25,16 @@ export const Input: FC<Props> = ({
     todoId,
     ...rest
 }) => {
-    const { setTodos } = useTodosCTX();
+    // const [value, setValue] = useState('');
 
+    const { todos, setTodos, addTodo } = useTodosCTX();
+
+    const onchangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+        const text = String(e.target.value).trim();
+        // setValue(text);
+        addTodo(text);
+    };
+    console.log(todos);
     const swicthCopleate = (id: number) => {
         setTodos((prev) =>
             prev.map((todo) =>
@@ -27,7 +45,17 @@ export const Input: FC<Props> = ({
     return (
         <div className={cls('input-container')} {...rest}>
             {type === 'text' ? (
-                <input className={cls('input-text')} type={'text'} />
+                <>
+                    <Button
+                        className="todos__input-text-add"
+                        element={<IconAdd />}
+                    />
+                    <input
+                        className={cls('input-text')}
+                        type={'text'}
+                        onChange={onchangeValue}
+                    />
+                </>
             ) : (
                 <div
                     className="input-compleate-wrap"

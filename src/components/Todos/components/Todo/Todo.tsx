@@ -10,7 +10,6 @@ import { useTodosCTX } from '../../../App/hooks';
 export const Todo: FC<ITodo> = ({ title, checked, id }) => {
     const { todos, setTodos } = useTodosCTX();
 
-    console.log(todos);
     const onclickDeleteTodo = (id: number) => {
         if (id !== undefined) {
             setTodos((prev) => prev.filter((todo) => todo.id !== id));

@@ -12,6 +12,8 @@ input:focus {
     --color-icon-complete: green;
     --color-icon-delete: red;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .input-container input:checked {

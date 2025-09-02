@@ -12,13 +12,27 @@ const initialTodos: ITodo[] = [
 export interface ITodoContext {
     todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
+    addTodo: (text: string) => void;
 }
 
 export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [todos, setTodos] = useState<ITodo[]>(initialTodos);
 
+    const addTodo = (value: string) => {
+        const random = Math.random() * performance.now();
+        const todo: ITodo = {
+            id: random,
+            title: value,
+            checked: false,
+        };
+        setTodos((prev) => {
+            prev.push(todo);
+            return prev;
+        });
+    };
+
     return (
-        <TodoContext.Provider value={{ todos, setTodos }}>
+        <TodoContext.Provider value={{ todos, setTodos, addTodo }}>
             {children}
         </TodoContext.Provider>
     );
