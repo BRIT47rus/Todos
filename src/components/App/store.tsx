@@ -19,18 +19,15 @@ export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [todos, setTodos] = useState<ITodo[]>(initialTodos);
 
     const addTodo = (value: string) => {
+        if (!value) return;
         const random = Math.random() * performance.now();
-        const todo: ITodo = {
-            id: random,
-            title: value,
-            checked: false,
-        };
-        setTodos((prev) => {
-            prev.push(todo);
-            return prev;
-        });
-    };
 
+        setTodos((prev) => [
+            ...prev,
+            { id: random, title: value, checked: false },
+        ]);
+    };
+    console.log(todos);
     return (
         <TodoContext.Provider value={{ todos, setTodos, addTodo }}>
             {children}

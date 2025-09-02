@@ -4,7 +4,6 @@ import {
     type ChangeEvent,
     type FC,
     type HTMLAttributes,
-    type RefObject,
 } from 'react';
 import './Input.css';
 import cls from 'classnames';
@@ -17,43 +16,57 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
     type?: 'text' | 'checkbox';
     todoId?: number;
     checkedProps?: boolean;
+    onAdd: (text: string) => void;
 }
 
 export const Input: FC<Props> = ({
     type = 'checkbox',
     checkedProps,
     todoId,
+    onAdd,
     ...rest
 }) => {
-    // const [value, setValue] = useState('');
+    const [value, setValue] = useState('');
+    const { todos, setTodos } = useTodosCTX();
 
-    const { todos, setTodos, addTodo } = useTodosCTX();
-
-    const onchangeValue = (e: ChangeEvent<HTMLInputElement>) => {
-        const text = String(e.target.value).trim();
-        // setValue(text);
-        addTodo(text);
-    };
-    console.log(todos);
-    const swicthCopleate = (id: number) => {
+    const switchComplete = (id: number) => {
         setTodos((prev) =>
             prev.map((todo) =>
                 todo.id === id ? { ...todo, checked: !todo.checked } : todo
             )
         );
     };
+
+    const onClick = () => {
+        console.log('clicjk');
+        const text = value.trim();
+        if (text) {
+            onAdd(text);
+            setValue('');
+        }
+    };
+
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value);
+    };
+    useEffect(() => {
+        setTodos(todos);
+    }, [setTodos, todos]);
     return (
         <div className={cls('input-container')} {...rest}>
             {type === 'text' ? (
                 <>
                     <Button
                         className="todos__input-text-add"
-                        element={<IconAdd />}
+                        element={<IconAdd className="" />}
+                        onClick={onClick}
                     />
                     <input
                         className={cls('input-text')}
                         type={'text'}
-                        onChange={onchangeValue}
+                        value={value}
+                        onChange={onChange}
+                        placeholder="Add new todo"
                     />
                 </>
             ) : (
@@ -61,7 +74,7 @@ export const Input: FC<Props> = ({
                     className="input-compleate-wrap"
                     onClick={() => {
                         if (todoId !== undefined) {
-                            swicthCopleate(todoId);
+                            switchComplete(todoId);
                         }
                     }}
                 >
