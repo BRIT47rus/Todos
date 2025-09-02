@@ -1,5 +1,4 @@
 import {
-    useEffect,
     useState,
     type ChangeEvent,
     type FC,
@@ -27,18 +26,9 @@ export const Input: FC<Props> = ({
     ...rest
 }) => {
     const [value, setValue] = useState('');
-    const { todos, setTodos } = useTodosCTX();
-
-    const switchComplete = (id: number) => {
-        setTodos((prev) =>
-            prev.map((todo) =>
-                todo.id === id ? { ...todo, checked: !todo.checked } : todo
-            )
-        );
-    };
+    const { toogleCompleate } = useTodosCTX();
 
     const onClick = () => {
-        console.log('clicjk');
         const text = value.trim();
         if (text) {
             onAdd(text);
@@ -49,9 +39,7 @@ export const Input: FC<Props> = ({
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
-    useEffect(() => {
-        setTodos(todos);
-    }, [setTodos, todos]);
+
     return (
         <div className={cls('input-container')} {...rest}>
             {type === 'text' ? (
@@ -74,7 +62,7 @@ export const Input: FC<Props> = ({
                     className="input-compleate-wrap"
                     onClick={() => {
                         if (todoId !== undefined) {
-                            switchComplete(todoId);
+                            toogleCompleate(todoId);
                         }
                     }}
                 >
