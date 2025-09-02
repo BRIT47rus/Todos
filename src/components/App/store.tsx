@@ -1,6 +1,6 @@
-import { useState, type FC, type ReactNode } from 'react';
+import { type FC, type ReactNode } from 'react';
 import type { ITodo } from './types';
-import { TodoContext } from './hooks';
+import { TodoContext, useLocalStorage } from './hooks';
 const initialTodos: ITodo[] = [
     { checked: false, title: 'Я из контекста', id: 14 },
     {
@@ -18,7 +18,7 @@ export interface ITodoContext {
 }
 
 export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
-    const [todos, setTodos] = useState<ITodo[]>(initialTodos);
+    const [todos, setTodos] = useLocalStorage<ITodo[]>('todos', initialTodos);
 
     const addTodo = (value: string) => {
         if (!value) return;
