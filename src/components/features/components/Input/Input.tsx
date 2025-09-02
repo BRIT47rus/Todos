@@ -26,6 +26,7 @@ export const Input: FC<Props> = ({
     ...rest
 }) => {
     const [value, setValue] = useState('');
+
     const { toogleCompleate } = useTodosCTX();
 
     const onClick = () => {
@@ -46,7 +47,12 @@ export const Input: FC<Props> = ({
                 <>
                     <Button
                         className="todos__input-text-add"
-                        element={<IconAdd className="" />}
+                        element={
+                            <IconAdd
+                                className="todos__icon-add"
+                                isValue={value.trim() ? true : false}
+                            />
+                        }
                         onClick={onClick}
                     />
                     <input

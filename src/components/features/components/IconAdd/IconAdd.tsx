@@ -1,23 +1,24 @@
+import classNames from 'classnames';
 import type { HTMLAttributes } from 'react';
 
 interface Props extends HTMLAttributes<HTMLElement> {
-    checked?: boolean;
-    className: string;
+    isValue: boolean;
 }
 
-export const IconAdd = ({ className }: Props) => {
+export const IconAdd = ({ isValue }: Props) => {
     return (
-        <div className={className}>
+        <div
+            className={classNames('todos__icon-add', {
+                'todos__icon-add-active': isValue,
+            })}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
             >
-                <path
-                    fill="currentColor"
-                    d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"
-                />
+                <path fill="green" d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z" />
             </svg>
         </div>
     );
