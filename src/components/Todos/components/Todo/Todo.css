@@ -1,13 +1,18 @@
 .todo {
     padding: var(--input-padding);
     border-bottom: 1px solid var(--color-secondary);
-    display: flex;
-    user-select: none;
+    /* display: flex;
+    align-items: center; */
+    display: grid;
+
+    grid-template-columns: auto max-content 1fr;
     align-items: center;
+
+    user-select: none;
 }
-.todo :first-child {
-}
+
 .todo span {
+    text-align: left;
     margin-left: 24px;
 }
 .todo__button {

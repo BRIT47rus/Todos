@@ -30,6 +30,7 @@ export const Input: FC<Props> = ({
                 <input className={cls('input-text')} type={'text'} />
             ) : (
                 <div
+                    className="input-compleate-wrap"
                     onClick={() => {
                         if (todoId !== undefined) {
                             swicthCopleate(todoId);
