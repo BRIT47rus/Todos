@@ -21,6 +21,6 @@
 .todo__text-compleate {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
-
+    transition: all 0.1s ease-in-out;
     color: var(--color--text);
 }

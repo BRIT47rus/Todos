@@ -1,7 +1,7 @@
-import { Title } from '../features/components/Title/Title';
 import { Todos } from '../Todos/Todos';
 import './App.css';
 import { TodosProvider } from './store';
+import { Title } from './Title/Title';
 
 function App() {
     return (
