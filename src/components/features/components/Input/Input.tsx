@@ -60,6 +60,7 @@ export const Input: FC<Props> = ({
                         type={'text'}
                         value={value}
                         onChange={onChange}
+                        maxLength={52}
                         placeholder="Add new todo"
                     />
                 </>

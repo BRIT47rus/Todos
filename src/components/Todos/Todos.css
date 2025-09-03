@@ -3,7 +3,7 @@
     background: var(--color-bg-card);
     box-shadow: 5px 9px 28px var(--color--text);
     width: 100%;
-    min-height: 50%;
+    /* height: 400px; */
 }
 .todos__input-text {
     display: flex;

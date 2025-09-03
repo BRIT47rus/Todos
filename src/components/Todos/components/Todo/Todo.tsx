@@ -6,6 +6,7 @@ import './Todo.css';
 import type { ITodo } from '../../../App/types';
 import cls from 'classnames';
 import { useTodosCTX } from '../../../App/hooks';
+import { formatText } from '../../../App/helpers';
 
 export const Todo: FC<ITodo> = ({ title, checked, id }) => {
     const { deleteTodo } = useTodosCTX();
@@ -14,7 +15,7 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
         <div className="todo">
             <Input checkedProps={checked} todoId={id} onAdd={() => null} />
             <span className={cls({ 'todo__text-compleate': !checked })}>
-                {title}
+                {formatText(title)}
             </span>
 
             <div className="todo__button">
