@@ -1,7 +1,7 @@
-import { Todos } from '../Todos/Todos';
+import { Title } from '../../features';
+import { Todos } from '../../Widjets/Todos/Todos';
+import { TodosProvider } from '../store';
 import './App.css';
-import { TodosProvider } from './store';
-import { Title } from './Title/Title';
 
 function App() {
     return (

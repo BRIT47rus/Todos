@@ -2,7 +2,7 @@ import type { FC, ReactNode } from 'react';
 
 import './Title.css';
 import cls from 'classnames';
-import type { TTitleList } from '../../features/components/types';
+import type { TTitleList } from '../types';
 interface Props {
     children: ReactNode;
     classNames: string;

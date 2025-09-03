@@ -1,13 +1,12 @@
-import { type FC } from 'react';
-import { Button } from '../../../features/components/Button/Button';
-import { IconDelete } from '../../../features/components/IconDelete/IconDelete';
-import { Input } from '../../../features/components/Input/Input';
-import './Todo.css';
-import type { ITodo } from '../../../App/types';
 import cls from 'classnames';
-import { useTodosCTX } from '../../../App/hooks';
-import { formatText } from '../../../App/helpers';
-
+import type { FC } from 'react';
+import { formatText } from '../../App/helpers';
+import { useTodosCTX } from '../../App/hooks';
+import type { ITodo } from '../../App/types';
+import { Button } from '../components/Button/Button';
+import { IconDelete } from '../components/IconDelete/IconDelete';
+import { Input } from '../components/Input/Input';
+import './Todo.css';
 export const Todo: FC<ITodo> = ({ title, checked, id }) => {
     const { deleteTodo } = useTodosCTX();
 
