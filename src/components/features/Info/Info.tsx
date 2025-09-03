@@ -3,7 +3,7 @@ import { Button } from '../components/Button/Button';
 import { InfoFilter } from '../components/InfoFilter/InfoFilter';
 import './Info.css';
 export const Info = () => {
-    const { todos } = useTodosCTX();
+    const { todos, deleteTodoS } = useTodosCTX();
 
     const countItems = todos.filter((item) => item.checked).length;
 
@@ -11,7 +11,7 @@ export const Info = () => {
         <div className="info-container">
             <div>{countItems} items left</div>
             <InfoFilter />
-            <Button onClick={() => null} element="Удалить завершенные" />
+            <Button onClick={deleteTodoS} element="Удалить завершенные" />
         </div>
     );
 };

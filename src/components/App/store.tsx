@@ -15,6 +15,7 @@ export interface ITodoContext {
     deleteTodo: (id: number) => void;
     toogleCompleate: (id: number) => void;
     filterTodos: (type: ActionFilter, state?: ITodo[]) => ITodo[];
+    deleteTodoS: VoidFunction;
     filteredTodos: ITodo[];
     setFilteredTodos: React.Dispatch<SetStateAction<ITodo[]>>;
 }
@@ -42,7 +43,9 @@ export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
             setTodos((prev) => prev.filter((todo) => todo.id !== id));
         }
     };
-
+    const deleteTodoS = () => {
+        setTodos((prev) => prev.filter((todo) => todo.checked));
+    };
     const toogleCompleate = (id: number) => {
         setTodos((prev) =>
             prev.map((todo) =>
@@ -83,6 +86,7 @@ export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
                 filterTodos,
                 filteredTodos,
                 setFilteredTodos,
+                deleteTodoS,
             }}
         >
             {children}

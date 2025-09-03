@@ -3,4 +3,5 @@
     grid-template-columns: auto 1fr auto;
     padding: 8px 16px;
     font-size: 16px;
+    color: var(--color--text);
 }
