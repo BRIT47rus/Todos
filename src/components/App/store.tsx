@@ -1,24 +1,30 @@
-import { type FC, type ReactNode } from 'react';
-import type { ITodo } from './types';
+import {
+    useEffect,
+    useState,
+    type FC,
+    type ReactNode,
+    type SetStateAction,
+} from 'react';
+import type { ActionFilter, ITodo } from './types';
 import { TodoContext, useLocalStorage } from './hooks';
-const initialTodos: ITodo[] = [
-    { checked: false, title: 'Я из контекста', id: 14 },
-    {
-        checked: true,
-        title: 'Я из контекста завершенный',
-        id: 145,
-    },
-];
+const initialTodos: ITodo[] = [];
 export interface ITodoContext {
     todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
     addTodo: (text: string) => void;
     deleteTodo: (id: number) => void;
     toogleCompleate: (id: number) => void;
+    filterTodos: (type: ActionFilter, state?: ITodo[]) => ITodo[];
+    filteredTodos: ITodo[];
+    setFilteredTodos: React.Dispatch<SetStateAction<ITodo[]>>;
 }
 
 export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [todos, setTodos] = useLocalStorage<ITodo[]>('todos', initialTodos);
+    const [filteredTodos, setFilteredTodos] = useState(todos);
+    useEffect(() => {
+        setFilteredTodos(todos);
+    }, [todos]);
 
     const addTodo = (value: string) => {
         if (!value) return;
@@ -42,9 +48,39 @@ export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
         );
     };
 
+    const filterTodos = (type: string, state: ITodo[] = todos): ITodo[] => {
+        switch (type) {
+            case 'all':
+                setFilteredTodos(todos);
+                return state;
+            case 'completed': {
+                const arr = state.filter((item) => !item.checked);
+                setFilteredTodos(arr);
+                return arr;
+            }
+            case 'active': {
+                const arr = state.filter((item) => item.checked);
+                setFilteredTodos(arr);
+                return arr;
+            }
+
+            default:
+                return state;
+        }
+    };
+
     return (
         <TodoContext.Provider
-            value={{ todos, setTodos, addTodo, deleteTodo, toogleCompleate }}
+            value={{
+                todos,
+                setTodos,
+                addTodo,
+                deleteTodo,
+                toogleCompleate,
+                filterTodos,
+                filteredTodos,
+                setFilteredTodos,
+            }}
         >
             {children}
         </TodoContext.Provider>
