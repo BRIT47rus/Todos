@@ -1,0 +1,7 @@
+.info-filter {
+    display: flex;
+    justify-content: center;
+}
+.info-filter > * {
+    padding: 0 16px;
+}

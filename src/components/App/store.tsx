@@ -22,6 +22,7 @@ export interface ITodoContext {
 export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [todos, setTodos] = useLocalStorage<ITodo[]>('todos', initialTodos);
     const [filteredTodos, setFilteredTodos] = useState(todos);
+
     useEffect(() => {
         setFilteredTodos(todos);
     }, [todos]);
@@ -35,11 +36,13 @@ export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
             ...prev,
         ]);
     };
+
     const deleteTodo = (id: number) => {
         if (id !== undefined) {
             setTodos((prev) => prev.filter((todo) => todo.id !== id));
         }
     };
+
     const toogleCompleate = (id: number) => {
         setTodos((prev) =>
             prev.map((todo) =>
