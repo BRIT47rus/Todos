@@ -3,15 +3,14 @@ import { Title } from '../../features/components/Title/Title';
 import { Input } from '../../features/components/Input/Input';
 
 import './Todos.css';
-import cls from 'classnames';
 import { Info, Todo } from '../../features';
 
 export const Todos = () => {
     const { filteredTodos, addTodo } = useTodosCTX();
 
     return (
-        <div className={cls('todos')}>
-            <div className="todos__input-text">
+        <div className={'todos'}>
+            <div className={'todos__input-text'}>
                 <Input type="text" onAdd={addTodo} />
             </div>
             {filteredTodos.length ? (

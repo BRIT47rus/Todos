@@ -1,10 +1,15 @@
 .info-filter {
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    min-height: 42px;
 }
-.info-filter > * {
-    padding: 0 16px;
+
+.info-filter__button {
+    padding: 8px 12px;
+    transition: border 5s ease;
+    border-radius: 4px;
 }
 .info-filter__button-active {
-    background: #000;
+    border: 1px solid var(--color--text);
 }

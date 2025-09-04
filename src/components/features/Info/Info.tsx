@@ -8,7 +8,7 @@ export const Info = () => {
     const countItems = todos.filter((item) => item.checked).length;
 
     return (
-        <div className="info-container">
+        <div className={'info-container'}>
             <div>{countItems} items left</div>
             <InfoFilter />
             <Button onClick={deleteTodoS} element="Удалить завершенные" />

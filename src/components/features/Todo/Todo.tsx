@@ -11,7 +11,7 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
     const { deleteTodo } = useTodosCTX();
 
     return (
-        <div className="todo">
+        <div className={'todo'}>
             <Input checkedProps={checked} todoId={id} onAdd={() => null} />
             <span className={cls({ 'todo__text-compleate': !checked })}>
                 {formatText(title)}

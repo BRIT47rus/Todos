@@ -24,7 +24,7 @@ export const InfoFilter = () => {
                         onClick={() => onClickBTNFilter(item)}
                         element={item}
                         active={selected}
-                        className={classNames({
+                        className={classNames('info-filter__button', {
                             'info-filter__button-active': selected === item,
                         })}
                     />
