@@ -25,25 +25,38 @@
     color: #e7dad9;
     background: var(--color--text);
 }
-
-.todo-enter {
-    opacity: 0;
-    transform: translateY(-10px);
+/* //-------------- */
+.todo-animation-in {
+    animation: fadeIn 1s forwards;
 }
 
-.todo-enter-active {
+.todo-animation-enter {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
 
-.todo-exit {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.todo-exit-active {
+.todo-animation-out {
+    animation: fadeOut 0.3s forwards;
     opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
