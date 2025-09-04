@@ -3,6 +3,8 @@ import { useTodosCTX } from '../../../App/hooks';
 import type { ActionFilter } from '../../../App/types';
 import { Button } from '../Button/Button';
 import './InfoFilter.css';
+
+import classNames from 'classnames';
 export const InfoFilter = () => {
     const { filterTodos } = useTodosCTX();
     const actions: ActionFilter[] = ['all', 'completed', 'active'];
@@ -22,6 +24,9 @@ export const InfoFilter = () => {
                         onClick={() => onClickBTNFilter(item)}
                         element={item}
                         active={selected}
+                        className={classNames({
+                            'info-filter__button-active': selected === item,
+                        })}
                     />
                 );
             })}
