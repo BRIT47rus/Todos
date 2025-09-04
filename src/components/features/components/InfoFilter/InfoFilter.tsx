@@ -1,17 +1,21 @@
 import { useTodosCTX } from '../../../App/hooks';
+import type { ActionFilter } from '../../../App/types';
 import { Button } from '../Button/Button';
 import './InfoFilter.css';
 export const InfoFilter = () => {
-    const { todos, filterTodos } = useTodosCTX();
-
+    const { filterTodos } = useTodosCTX();
+    const actions: ActionFilter[] = ['all', 'completed', 'active'];
     return (
         <div className="info-filter">
-            <Button onClick={() => filterTodos('all', todos)} element="All" />
-            <Button
-                onClick={() => filterTodos('completed')}
-                element="Completed"
-            />
-            <Button onClick={() => filterTodos('active')} element="Active" />
+            {actions.map((item, i) => {
+                return (
+                    <Button
+                        key={i}
+                        onClick={() => filterTodos(item)}
+                        element={item}
+                    />
+                );
+            })}
         </div>
     );
 };
