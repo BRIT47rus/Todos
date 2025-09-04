@@ -11,7 +11,11 @@ export const Info = () => {
         <div className={'info-container'}>
             <div>{countItems} items left</div>
             <InfoFilter />
-            <Button onClick={deleteTodoS} element="Удалить завершенные" />
+            <Button
+                className="info-filter__button"
+                onClick={deleteTodoS}
+                element="clear completed"
+            />
         </div>
     );
 };
