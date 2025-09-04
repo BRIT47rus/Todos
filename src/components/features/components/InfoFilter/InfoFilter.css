@@ -5,3 +5,6 @@
 .info-filter > * {
     padding: 0 16px;
 }
+.info-filter__button-active {
+    background: #000;
+}
