@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-size: var(--size-media);
     background: var(--color-secondary);
 }
 
