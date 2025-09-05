@@ -3,7 +3,7 @@ export const switcherBoolean = (cb: () => void) => {
 };
 
 export const formatText = (text: string) => {
-    const countW = 20;
+    const countW = 40;
 
     if (text.length <= countW) {
         return text;
@@ -15,7 +15,7 @@ export const formatText = (text: string) => {
     }
 
     const formatedText = result.map((line, i) => (
-        <div key={i} style={{ fontSize: '0.6em' }}>
+        <div key={i} style={{ fontSize: '0.7em' }}>
             {line}
             <br />
         </div>
