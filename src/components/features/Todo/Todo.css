@@ -5,8 +5,6 @@
     display: grid;
     grid-template-columns: auto max-content 1fr;
     align-items: center;
-
-    height: 84px;
 }
 
 .todo span {
@@ -60,5 +58,20 @@
         box-shadow: 0 0 67px 14px var(--color-icon-delete);
 
         transform: translateX(400px);
+    }
+}
+
+@media (max-width: 490px) {
+    body .todo-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 658px) {
+    body {
+        font-size: 14px;
+    }
+    body .todo-text {
+        font-size: 14px;
     }
 }

@@ -14,6 +14,7 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [animation, setAnimation] = useState<TStyleAnimation>('in');
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         if (animation === 'in') {
@@ -35,6 +36,17 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
         };
     }, [animation, deleteTodo, id]);
 
+    useEffect(() => {
+        const handleWindowWidth = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleWindowWidth);
+        return () => {
+            window.removeEventListener('resize', handleWindowWidth);
+        };
+    }, []);
+
     const handleDelete = () => {
         setAnimation('out');
     };
@@ -45,8 +57,12 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
             className={cls('todo', animation && `todo-animation-${animation}`)}
         >
             <Input checkedProps={checked} todoId={id} onAdd={() => null} />
-            <span className={cls({ 'todo__text-compleate': !checked })}>
-                {formatText(title)}
+            <span
+                className={cls('todo-text', {
+                    'todo__text-compleate': !checked,
+                })}
+            >
+                {formatText(title, windowWidth)}
             </span>
 
             <div className="todo__button">

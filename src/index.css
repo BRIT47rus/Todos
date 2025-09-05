@@ -29,3 +29,9 @@ body {
         font-size: var(--size-media);
     }
 }
+@media (max-width: 490px) {
+    body {
+        --size-media: 18px;
+        font-size: var(--size-media);
+    }
+}
