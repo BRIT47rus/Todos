@@ -21,3 +21,9 @@ body {
 
     background: var(--color-secondary);
 }
+
+@media (max-width: 490px) {
+    body {
+        font-size: 10px;
+    }
+}
