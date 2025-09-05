@@ -3,7 +3,7 @@
     background: var(--color--text);
     box-shadow: 5px 9px 28px var(--color--text);
     width: 100%;
-    min-height: 12em;
+    min-height: 18em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
