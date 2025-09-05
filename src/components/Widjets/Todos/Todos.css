@@ -26,37 +26,3 @@
     background: var(--color--text);
 }
 /* //-------------- */
-.todo-animation-in {
-    animation: fadeIn 1s forwards;
-}
-
-.todo-animation-enter {
-    opacity: 1;
-}
-
-.todo-animation-out {
-    animation: fadeOut 0.3s forwards;
-    opacity: 0;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-}

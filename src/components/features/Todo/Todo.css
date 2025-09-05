@@ -22,3 +22,43 @@
     transition: all 0.1s ease-in-out;
     color: var(--color--text);
 }
+/* ------------ */
+.todo-animation-in {
+    animation: fadeIn 0.2s forwards;
+}
+
+.todo-animation-enter {
+    opacity: 1;
+}
+
+.todo-animation-out {
+    animation: fadeOut 0.2s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        background: rgba(172, 255, 47, 0.295);
+        box-shadow: 0 0 67px 14px greenyellow;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        background: rgba(255, 0, 0, 0.418);
+        box-shadow: 0 0 67px 14px var(--color-icon-delete);
+
+        transform: translateX(400px);
+    }
+}

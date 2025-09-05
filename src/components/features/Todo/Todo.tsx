@@ -12,23 +12,29 @@ import type { TStyleAnimation } from '../../Widjets/Todos/Todos';
 export const Todo: FC<ITodo> = ({ title, checked, id }) => {
     const { deleteTodo } = useTodosCTX();
     const ref = useRef<HTMLDivElement>(null);
-    const [animation, setAnimation] = useState<TStyleAnimation>();
+    const [animation, setAnimation] = useState<TStyleAnimation>('in');
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
-        setAnimation('in');
-        const enterTime = setTimeout(() => {
-            setAnimation('enter');
-        }, 300);
+        if (animation === 'in') {
+            timerRef.current = setTimeout(() => {
+                setAnimation('enter');
+            }, 500);
+        } else if (animation === 'out') {
+            // При анимации выхода запускаем таймер, и после 500 мс вызываем deleteTodo
+            timerRef.current = setTimeout(() => {
+                deleteTodo(id);
+            }, 300);
+        }
 
         return () => {
-            clearTimeout(enterTime);
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+                timerRef.current = null;
+            }
         };
-    }, []);
-    const onAnimationEnd = (id: number) => {
-        if (animation === 'out') {
-            deleteTodo(id);
-        }
-    };
+    }, [animation, deleteTodo, id]);
+
     const handleDelete = () => {
         setAnimation('out');
     };
@@ -37,7 +43,6 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
         <div
             ref={ref}
             className={cls('todo', animation && `todo-animation-${animation}`)}
-            onAnimationEnd={() => onAnimationEnd(id)}
         >
             <Input checkedProps={checked} todoId={id} onAdd={() => null} />
             <span className={cls({ 'todo__text-compleate': !checked })}>
@@ -45,12 +50,7 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
             </span>
 
             <div className="todo__button">
-                <Button
-                    element={<IconDelete />}
-                    onClick={() => {
-                        handleDelete();
-                    }}
-                />
+                <Button element={<IconDelete />} onClick={handleDelete} />
             </div>
         </div>
     );

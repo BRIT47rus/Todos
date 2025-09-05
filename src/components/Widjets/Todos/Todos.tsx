@@ -17,12 +17,7 @@ export const Todos = () => {
             {filteredTodos.length ? (
                 filteredTodos.map(({ id, title, checked }) => {
                     return (
-                        <div
-                            key={id}
-                            // className={
-                            //     // animation && `todo-animation-${animation}`
-                            // }
-                        >
+                        <div key={id}>
                             <Todo title={title} checked={checked} id={id} />
                         </div>
                     );
@@ -30,7 +25,7 @@ export const Todos = () => {
             ) : (
                 <div className="todos__empty">
                     <Title Element={'h2'} classNames="title-h2">
-                        Cписок пуст
+                        The list is empty.
                     </Title>
                 </div>
             )}
