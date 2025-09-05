@@ -22,7 +22,6 @@ export const Todo: FC<ITodo> = ({ title, checked, id }) => {
                 setAnimation('enter');
             }, 500);
         } else if (animation === 'out') {
-            // При анимации выхода запускаем таймер, и после 500 мс вызываем deleteTodo
             timerRef.current = setTimeout(() => {
                 deleteTodo(id);
             }, 300);

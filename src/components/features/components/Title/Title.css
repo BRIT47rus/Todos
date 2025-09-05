@@ -1,6 +1,11 @@
 .title-h1 {
-    font-size: 4em;
+    font-size: 3em;
     color: var(--color-accent);
     text-transform: lowercase;
     font-weight: lighter;
+}
+@media (max-width: 350px) {
+    .title-h1 {
+        font-size: 2em;
+    }
 }

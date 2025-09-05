@@ -2,6 +2,7 @@ input {
     all: unset;
     box-sizing: border-box;
     transition: all 0.3s ease;
+    text-align: center;
 }
 input:focus {
     color: var(--color-bg-card);
@@ -50,4 +51,12 @@ input:focus {
 }
 .todos__icon-add-active {
     opacity: 1;
+}
+@media (max-width: 350px) {
+    .input-text {
+        font-size: 20px;
+    }
+    .input-container {
+        height: 40px;
+    }
 }

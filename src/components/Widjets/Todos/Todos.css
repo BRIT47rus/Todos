@@ -26,3 +26,8 @@
     background: var(--color--text);
 }
 /* //-------------- */
+@media (max-width: 350px) {
+    .todos__empty {
+        font-size: 20px;
+    }
+}
