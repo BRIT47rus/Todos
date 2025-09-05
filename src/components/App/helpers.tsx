@@ -5,14 +5,23 @@ export const switcherBoolean = (cb: () => void) => {
 };
 
 export const formatText = (text: string) => {
-    const t =
-        text.length > 26 ? text.slice(0, 26) + '\n' + text.slice(26) : text;
+    const countW = 20;
 
-    const formatedText = t.split('\n').map((line, i) => (
-        <React.Fragment key={i}>
+    if (text.length <= countW) {
+        return text;
+    }
+
+    const result: string[] = [];
+    for (let i = 0; i < text.length; i += countW) {
+        result.push(text.slice(i, i + countW));
+    }
+
+    const formatedText = result.map((line, i) => (
+        <div key={i} style={{ fontSize: '0.6em' }}>
             {line}
-            {i !== t.split('\n').length - 1 && <br />}
-        </React.Fragment>
+            <br />
+        </div>
     ));
+
     return formatedText;
 };
