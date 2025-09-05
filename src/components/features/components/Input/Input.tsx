@@ -1,4 +1,6 @@
 import {
+    useCallback,
+    useEffect,
     useState,
     type ChangeEvent,
     type FC,
@@ -28,17 +30,31 @@ export const Input: FC<Props> = ({
     const [value, setValue] = useState('');
     const { toogleCompleate } = useTodosCTX();
 
-    const onClick = () => {
+    const handleClickAdd = useCallback(() => {
         const text = value.trim();
         if (text) {
             onAdd(text);
             setValue('');
         }
-    };
+    }, [onAdd, value]);
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
+
+    useEffect(() => {
+        const handleKeyDown = ({ key }: KeyboardEvent) => {
+            if (key === 'Enter') {
+                handleClickAdd();
+                setValue('');
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleClickAdd]);
 
     return (
         <div className={cls('input-container')} {...rest}>
@@ -52,7 +68,7 @@ export const Input: FC<Props> = ({
                                 isValue={value.trim() ? true : false}
                             />
                         }
-                        onClick={onClick}
+                        onClick={handleClickAdd}
                     />
                     <input
                         className={cls('input-text')}
