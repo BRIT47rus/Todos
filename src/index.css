@@ -6,6 +6,7 @@
     --color--text: #aca9a9;
     --color-bg-card: #fefefe;
     --color-accent: #e7dad9;
+    --size-media: 16px;
 }
 * {
     margin: 0;
@@ -24,6 +25,7 @@ body {
 
 @media (max-width: 490px) {
     body {
-        font-size: 4px;
+        --size-media: 12px;
+        font-size: var(--size-media);
     }
 }
